@@ -22,14 +22,13 @@ class App extends Component {
         <p className="overocupation">Sobreocupacion</p>
       </td>
     );
-  }
+  };
 
   renderContributors = (contributors) => {
     if (!contributors) {
-      return;
+      return null;
     }
-    return contributors.map((item) => {
-      return (
+    return contributors.map(item => (
       <tr key={item.id}>
         <td>{`${item.first_name} ${item.last_name}`}</td>
         <td>{item.workroom}</td>
@@ -38,10 +37,8 @@ class App extends Component {
         <td>{item.business_unit}</td>
         <td>{this.checkWorkroom(item)}</td>
       </tr>
-      );
-    }
-  )
-  }
+    ));
+  };
 
   render() {
     return (
@@ -63,7 +60,9 @@ class App extends Component {
                     <th />
                   </tr>
                 </thead>
-                <tbody>{this.renderContributors(this.props.contributors.unassigned)}</tbody>
+                <tbody>
+                  {this.renderContributors(this.props.contributors.unassigned)}
+                </tbody>
               </Table>
             </Col>
           </Row>
