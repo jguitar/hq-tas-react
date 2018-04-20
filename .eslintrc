@@ -9,7 +9,8 @@
         "extensions": [".js", ".jsx"]
       }
     ],
-    "quotes": ["error", "double"]
+    "quotes": ["error", "double"],
+    "react/prop-types": 0
   },
   "env": {
     "browser": true

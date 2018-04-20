@@ -60,9 +60,7 @@ class App extends Component {
                     <th />
                   </tr>
                 </thead>
-                <tbody>
-                  {this.renderContributors(this.props.contributors.unassigned)}
-                </tbody>
+                <tbody>{this.renderContributors(this.props.contributors.unassigned)}</tbody>
               </Table>
             </Col>
           </Row>
