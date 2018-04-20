@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "ajv": "^6.4.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
+    "react-test-renderer": "^16.3.2",
     "redux": "^4.0.0"
   },
   "scripts": {
