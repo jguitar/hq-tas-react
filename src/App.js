@@ -10,18 +10,10 @@ class App extends Component {
 
   checkWorkroom = (contributor) => {
     if (!contributor.workroom) {
-      return (
-        <td>
-          <p className="unassigned">Sin puesto asignado</p>
-        </td>
-      );
+      return <p className="unassigned">Sin puesto asignado</p>;
     }
 
-    return (
-      <td>
-        <p className="overocupation">Sobreocupacion</p>
-      </td>
-    );
+    return <p className="overocupation">Sobreocupacion</p>;
   };
 
   renderContributors = (contributors) => {
