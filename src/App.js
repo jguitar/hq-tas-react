@@ -3,7 +3,7 @@ import { Table, Grid, Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getContributorsUnassigned } from "./actions";
 
-class App extends Component {
+export class App extends Component {
   componentWillMount() {
     this.props.dispatch(getContributorsUnassigned());
   }
