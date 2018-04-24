@@ -1,0 +1,5 @@
+node_modules
+src/assets
+src/registerServiceWorker.js
+package-lock.json
+package.json
