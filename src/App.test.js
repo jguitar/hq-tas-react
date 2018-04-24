@@ -37,8 +37,4 @@ describe("Table contributors without workplace", () => {
     expect(enzymeWrapper.find(".unassigned").length).toEqual(1);
     expect(enzymeWrapper.find(".overocupation").length).toEqual(1);
   });
-
-  // it('renders only contributors without workplace', () =>{
-  //   expect(shallow(<Table />).exists()).toBe(true)
-  // })
 });
