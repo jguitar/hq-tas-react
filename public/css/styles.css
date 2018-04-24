@@ -1,27 +1,52 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+.table {
+  margin-top: 20px !important;
+}
+.table td {
+  padding: 15px 0 !important;
+  min-width: 150px !important;
+}
+.nav {
+  margin: 0;
+  height: 50px;
+  background-color: #960000;
+  color: white;
+}
 .unassigned {
   display: block;
-  padding: 10px;
-  border: 2px solid red;
+  width: 80%;
+  padding: 2px;
+  border: 1px solid #ce422b;
   border-radius: 15px;
-  color: red;
+  color: #ce422b;
   text-align: center;
+  margin: 0 auto;
 }
 
 .overocupation {
   display: block;
-  padding: 10px;
-  border: 2px solid blue;
+  width: 80%;
+  padding: 2px;
+  border: 1px solid #7088a2;
   border-radius: 15px;
-  color: blue;
+  color: #7088a2;
   text-align: center;
+  margin: 0 auto;
 }
 
 .customHeadTable {
   text-align: center;
 }
 
-.customTable {
-  margin-top: 5%;
-  width: 100%;
-  border: none;
+.position_data {
+  margin-top: 10%;
+  padding-left: 6%;
+}
+.danger {
+  color: #ce422b;
+  font-weight: bold;
 }
