@@ -3,10 +3,14 @@ import { Table, Grid, Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getContributorsUnassigned } from "./actions";
 
+import SiteData from "./components/siteData/siteData";
+
 class App extends Component {
   componentWillMount() {
     this.props.getContributors();
   }
+
+  overpopulated = false;
 
   checkWorkroom = (contributor) => {
     if (!contributor.workroom) {
@@ -34,12 +38,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h2>WELCOME TO Take A Sit!</h2>
+        <h2 className="nav">WELCOME TO Take A Sit!</h2>
 
         <Grid fluid>
           <Row className="show-grid">
             <Col xs={12} md={8}>
-              <Table bsClass="customTable" responsive>
+              <Table responsive>
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -53,6 +57,9 @@ class App extends Component {
                 </thead>
                 <tbody>{this.renderContributors(this.props.contributors.unassigned)}</tbody>
               </Table>
+            </Col>
+            <Col xs={12} md={4} className="position_data">
+              <SiteData />
             </Col>
           </Row>
         </Grid>
