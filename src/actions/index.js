@@ -1,7 +1,7 @@
-import axios from "axios";
+import API from "../api";
 
 export function getContributorsUnassigned() {
-  const request = axios.get("/contributors/unassigned.json").then(response => response.data);
+  const request = API.get(`/contributors/unassigned.json?site_id=${process.env.REACT_APP_SITE_ID}`).then(response => response.data);
 
   return {
     type: "GET_CONTRIBUTORS_UNASSIGNED",
@@ -10,7 +10,7 @@ export function getContributorsUnassigned() {
 }
 
 export function getBusinessUnits() {
-  const request = axios.get("/business_units.json").then(response => response.data);
+  const request = API.get("/business_units.json").then(response => response.data);
 
   return {
     type: "GET_BUSINESS_UNITS",
