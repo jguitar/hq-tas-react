@@ -1,0 +1,18 @@
+{ 
+  "app": {
+    "title": "Welcome to Take A Sit"
+  },
+  "contributors_list": {
+    "contributor": "Contributor",
+    "workplace": "Puesto de trabajo",
+    "workroom": "Workroom",
+    "floor": "Floor",
+    "employee_code": "Employee code",
+    "bussiness_unit": "Bussiness Unit",
+    "site": "Site",
+    "building": "Building",
+    "state": "State",
+    "unassigned": "Sin puesto asignado",
+    "overoccupation": "Sobreocupacion"
+  }
+}
