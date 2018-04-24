@@ -2,10 +2,10 @@
 
 import React from "react";
 import { mount } from "enzyme";
-import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import configureStore from "redux-mock-store";
 
+import API from "./api";
 import App from "./App";
 
 describe("Table contributors without workplace", () => {
@@ -18,7 +18,7 @@ describe("Table contributors without workplace", () => {
       },
     };
 
-    const mock = new MockAdapter(axios);
+    const mock = new MockAdapter(API);
     mock.onGet("/contributors/unassigned.json").reply(200, {});
 
     const mockStore = configureStore();
