@@ -3,17 +3,16 @@ import { Table, Grid, Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getContributorsUnassigned } from "./actions";
 
-export class App extends Component {
+class App extends Component {
   componentWillMount() {
-    this.props.dispatch(getContributorsUnassigned());
+    this.props.getContributors();
   }
 
   checkWorkroom = (contributor) => {
     if (!contributor.workroom) {
-      return <p className="unassigned">Sin puesto asignado</p>;
+      return <span className="unassigned">Sin puesto asignado</span>;
     }
-
-    return <p className="overocupation">Sobreocupacion</p>;
+    return <span className="overocupation">Sobreocupacion</span>;
   };
 
   renderContributors = (contributors) => {
@@ -68,4 +67,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    getContributors: () => {
+      dispatch(getContributorsUnassigned());
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
