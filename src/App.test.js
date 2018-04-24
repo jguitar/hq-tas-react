@@ -19,7 +19,9 @@ describe("Table contributors without workplace", () => {
     };
 
     const mock = new MockAdapter(API);
-    mock.onGet("/contributors/unassigned.json").reply(200, {});
+    mock
+      .onGet(`/contributors/unassigned.json?site_id=${process.env.REACT_APP_SITE_ID}`)
+      .reply(200, {});
 
     const mockStore = configureStore();
     const store = mockStore(initialState);
