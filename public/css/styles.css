@@ -1,29 +1,27 @@
-.unassigned{
-    padding: 10px;
-    border: 2px solid red;
-    border-radius: 15px;
-    color: red;
-    text-align: center;
-
+.unassigned {
+  display: block;
+  padding: 10px;
+  border: 2px solid red;
+  border-radius: 15px;
+  color: red;
+  text-align: center;
 }
 
 .overocupation {
-    padding: 10px;
-    border: 2px solid blue;
-    border-radius: 15px;
-    color: blue;
-    text-align: center
+  display: block;
+  padding: 10px;
+  border: 2px solid blue;
+  border-radius: 15px;
+  color: blue;
+  text-align: center;
 }
 
-.customHeadTable{
-    text-align: center;
-
+.customHeadTable {
+  text-align: center;
 }
 
-.customTable{
-    
-    margin-top:5%;
-    width: 100%;
-    border: none;
-
+.customTable {
+  margin-top: 5%;
+  width: 100%;
+  border: none;
 }
