@@ -5,6 +5,8 @@ export default function (state = {}, action) {
 
     case "GET_BUSINESS_UNITS":
       return { ...state, business_units: action.payload };
+    case "GET_SITE_FULL_INFO":
+      return { ...state, site: action.payload };
 
     default:
       return state;
