@@ -12,7 +12,7 @@
     "site": "Site",
     "building": "Edificio",
     "state": "Estado",
-    "unassigned": "Without workplace",
-    "overoccupation": "Overoccupation"
+    "unassigned": "Sin puesto asignado",
+    "overoccupation": "Sobreocupación"
   }
 }

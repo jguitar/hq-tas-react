@@ -4,7 +4,7 @@
   },
   "contributors_list": {
     "contributor": "Contributor",
-    "workplace": "Puesto de trabajo",
+    "workplace": "Workplace",
     "workroom": "Workroom",
     "floor": "Floor",
     "employee_code": "Employee code",
@@ -12,7 +12,7 @@
     "site": "Site",
     "building": "Building",
     "state": "State",
-    "unassigned": "Sin puesto asignado",
-    "overoccupation": "Sobreocupacion"
+    "unassigned": "Without workplace",
+    "overoccupation": "Overoccupation"
   }
 }
