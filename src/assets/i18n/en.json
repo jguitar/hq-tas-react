@@ -1,6 +1,6 @@
 { 
   "app": {
-    "title": "Welcome to Take A Sit"
+    "title": "TAS - %{site_name}"
   },
   "contributors_list": {
     "contributor": "Contributor",
@@ -14,5 +14,13 @@
     "state": "State",
     "unassigned": "Without workplace",
     "overoccupation": "Overoccupation"
+  },
+  "site_data": {
+    "ocupation_title": "Occupancy per floor",
+    "situation_title": "Status of contributors",
+    "contributors_without_workroom": "Contributors without workroom: <span class='danger_bold'>{` %{number}`}</span>",
+    "contributors_over_occupation": "Overoccupation contributors: %{number}",
+    "contributors_assigned": "signed contributors: %{number}",
+    "contributors_size": "<strong>Total contributors: ${number}</strong>"
   }
 }

@@ -1,3 +1,4 @@
+import { setLocale } from "react-redux-i18n";
 import API from "../api";
 
 export function getContributorsUnassigned() {
@@ -26,3 +27,7 @@ export function getBusinessUnits() {
     payload: request,
   };
 }
+
+export const changeLanguage = lang => (dispatch) => {
+  dispatch(setLocale(lang));
+};

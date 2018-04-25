@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import { Translate } from "react-redux-i18n";
 import { Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getSiteFullInfo } from "../../actions";
 
 class SiteData extends Component {
-  overpopulated = false;
-
   componentWillMount() {
     this.props.getFullSite();
   }
+
+  overpopulated = false;
 
   checkSobreoccupation(floor) {
     if (floor.occupation > floor.capacity) {
@@ -41,24 +42,46 @@ class SiteData extends Component {
     return (
       <Row>
         <Col xs={12} md={12}>
-          <h3>Ocupación por planta</h3>
+          <h3>
+            <Translate value="site_data.ocupation_title" />
+          </h3>
           {floors}
           {this.overpopulated ? (
             <div>
-              <span className="danger_bold">*</span>Planta sobreocupada
+              <Translate value="site_data.overocupation_legend" dangerousHTML />
             </div>
           ) : null}
         </Col>
         <Col xs={12} md={12}>
-          <h3>Situación de los colaboradores</h3>
+          <h3>
+            <Translate value="site_data.situation_title" />
+          </h3>
           <p>
-            Colaboradores sin sala:
-            <span className="danger_bold">{` ${site.contributors_without_workroom}`}</span>
+            <Translate
+              value="site_data.contributors_without_workroom"
+              number={site.contributors_without_workroom}
+              className="danger-bold"
+              dangerousHTML
+            />
           </p>
-          <p>Colaboradores sobreocupación: {site.contributors_over_occupation}</p>
-          <p>Colaboradores asignados: {site.contributors_assigned}</p>
           <p>
-            <strong>Total colaboradores: {site.contributors_size}</strong>
+            <Translate
+              value="site_data.contributors_over_occupation"
+              number={site.contributors_over_occupation}
+            />
+          </p>
+          <p>
+            <Translate
+              value="site_data.contributors_assigned"
+              number={site.contributors_assigned}
+            />
+          </p>
+          <p>
+            <Translate
+              value="site_data.contributors_size"
+              number={site.contributors_size}
+              dangerousHTML
+            />
           </p>
         </Col>
       </Row>
