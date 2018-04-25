@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { getSiteFullInfo } from "../../actions";
 
 class SiteData extends Component {
+  overpopulated = false;
+
   componentWillMount() {
     this.props.getFullSite();
   }
@@ -27,37 +29,33 @@ class SiteData extends Component {
     }
 
     const floors = site.buildings[0].floors.map(item => (
-      <div key={item.id}>
-        <Row>
-          <Col xs={12} md={2} mdOffset={1}>
-            <div>{item.name}</div>
-          </Col>
-          <Col xs={12} md={6}>
-            {this.checkSobreoccupation(item)}
-          </Col>
-        </Row>
-      </div>
+      <Row key={item.id}>
+        <Col xs={12} md={2} mdOffset={1}>
+          <div>{item.name}</div>
+        </Col>
+        <Col xs={12} md={6}>
+          {this.checkSobreoccupation(item)}
+        </Col>
+      </Row>
     ));
     return (
       <Row>
         <Col xs={12} md={12}>
-          <h3>Ocupacion por planta</h3>
+          <h3>Ocupación por planta</h3>
           {floors}
           {this.overpopulated ? (
             <div>
-              <span className="danger">*</span>Planta sobreocupada
+              <span className="danger_bold">*</span>Planta sobreocupada
             </div>
           ) : null}
         </Col>
         <Col xs={12} md={12}>
           <h3>Situación de los colaboradores</h3>
           <p>
-            Colaboradores sin sala:<span className="danger">
-              {" "}
-              {` ${site.contributors_without_workroom}`}
-            </span>
+            Colaboradores sin sala:
+            <span className="danger_bold">{` ${site.contributors_without_workroom}`}</span>
           </p>
-          <p>Colaboradores sobreocupacion: {site.contributors_over_occupation}</p>
+          <p>Colaboradores sobreocupación: {site.contributors_over_occupation}</p>
           <p>Colaboradores asignados: {site.contributors_assigned}</p>
           <p>
             <strong>Total colaboradores: {site.contributors_size}</strong>

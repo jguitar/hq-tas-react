@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Table, Grid, Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getContributorsUnassigned } from "./actions";
 
+import { getContributorsUnassigned } from "./actions";
 import SiteData from "./components/siteData/siteData";
 
 class App extends Component {
@@ -10,13 +10,11 @@ class App extends Component {
     this.props.getContributors();
   }
 
-  overpopulated = false;
-
   checkWorkroom = (contributor) => {
     if (!contributor.workroom) {
       return <span className="unassigned">Sin puesto asignado</span>;
     }
-    return <span className="overocupation">Sobreocupacion</span>;
+    return <span className="overocupation">Sobreocupación</span>;
   };
 
   renderContributors = (contributors) => {

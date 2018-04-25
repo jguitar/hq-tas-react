@@ -48,5 +48,8 @@ body {
 }
 .danger {
   color: #ce422b;
+}
+.danger_bold {
+  color: #ce422b;
   font-weight: bold;
 }

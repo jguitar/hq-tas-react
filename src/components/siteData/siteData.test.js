@@ -9,7 +9,7 @@ import API from "../../api";
 
 import SiteData from "./siteData";
 
-describe("Site data test", () => {
+describe("Site data test without overoccupation", () => {
   let enzymeWrapper;
   beforeEach(() => {
     const initialState = {
@@ -38,12 +38,12 @@ describe("Site data test", () => {
     enzymeWrapper = mount(<SiteData store={store} />);
   });
 
-  it("should exist one element with class danger", () => {
-    expect(enzymeWrapper.find("span").length).toEqual(1);
+  it("should not exist element with class danger", () => {
+    expect(enzymeWrapper.find(".danger").length).toEqual(0);
   });
 });
 
-describe("Site data test", () => {
+describe("Site data test with overoccupation", () => {
   let enzymeWrapper;
   beforeEach(() => {
     const initialState = {
@@ -72,7 +72,7 @@ describe("Site data test", () => {
     enzymeWrapper = mount(<SiteData store={store} />);
   });
 
-  it("should exist one element with *", () => {
-    expect(enzymeWrapper.find("span").length).toEqual(2);
+  it("should exist one element with class danger", () => {
+    expect(enzymeWrapper.find(".danger").length).toEqual(1);
   });
 });
