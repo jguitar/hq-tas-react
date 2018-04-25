@@ -9,6 +9,15 @@ export function getContributorsUnassigned() {
   };
 }
 
+export function getSiteFullInfo() {
+  const request = API.get(`/sites/${process.env.REACT_APP_SITE_ID}/full.json`).then(response => response.data);
+
+  return {
+    type: "GET_SITE_FULL_INFO",
+    payload: request,
+  };
+}
+
 export function getBusinessUnits() {
   const request = API.get("/business_units.json").then(response => response.data);
 

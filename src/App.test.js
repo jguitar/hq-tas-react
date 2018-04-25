@@ -1,8 +1,9 @@
 /* global it, describe, expect, beforeEach */
 
 import React from "react";
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
 import MockAdapter from "axios-mock-adapter";
+import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 
 import API from "./api";
@@ -15,6 +16,21 @@ describe("Table contributors without workplace", () => {
     const initialState = {
       contributors: {
         unassigned: [{ first_name: "PEPE", id: 2, workroom: 1 }, { first_name: "ALEX", id: 3 }],
+        site: {
+          id: 1,
+          buildings: [
+            {
+              id: 1,
+              floors: [
+                {
+                  id: 1,
+                  capacity: 6,
+                  occupation: 5,
+                },
+              ],
+            },
+          ],
+        },
       },
     };
 
@@ -23,15 +39,18 @@ describe("Table contributors without workplace", () => {
       .onGet(`/contributors/unassigned.json?site_id=${process.env.REACT_APP_SITE_ID}`)
       .reply(200, {});
 
+    mock.onGet(`/sites/${process.env.REACT_APP_SITE_ID}/full.json`).reply(200, {});
+
     const mockStore = configureStore();
     const store = mockStore(initialState);
-    enzymeWrapper = mount(<App store={store} />);
+    enzymeWrapper = mount(<Provider store={store}>
+      <App />
+                          </Provider>);
   });
 
   it("should render self and subcomponents", () => {
     expect(enzymeWrapper.find("Grid").prop("fluid")).toBe(true);
 
-    expect(enzymeWrapper.find("Row").hasClass("show-grid")).toBe(true);
     expect(enzymeWrapper.find("Table").exists()).toBe(true);
   });
 
