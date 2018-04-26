@@ -12,10 +12,10 @@ const NavBar = props => (
     <Nav>
       <NavDropdown eventKey={3} title="Change language" id="basic-nav-dropdown">
         <MenuItem eventKey={3.1} value="en" onClick={props.setLanguage}>
-            En
+          en
         </MenuItem>
         <MenuItem eventKey={3.2} value="es" onClick={props.setLanguage}>
-            Es
+          es
         </MenuItem>
       </NavDropdown>
     </Nav>

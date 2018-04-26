@@ -29,6 +29,16 @@ class SiteData extends Component {
       return null;
     }
 
+    if (site.buildings.length === 0) {
+      return (
+        <tr>
+          <td colSpan="6">
+            <Translate value="contributors_list.empty" />
+          </td>
+        </tr>
+      );
+    }
+
     const floors = site.buildings[0].floors.map(item => (
       <Row key={item.id}>
         <Col xs={12} md={2} mdOffset={1}>
@@ -43,7 +53,7 @@ class SiteData extends Component {
       <Row>
         <Col xs={12} md={12}>
           <h3>
-            <Translate value="site_data.ocupation_title" />
+            <Translate value="site_data.ocupation_title" dangerousHTML />
           </h3>
           {floors}
           {this.overpopulated ? (
@@ -54,7 +64,7 @@ class SiteData extends Component {
         </Col>
         <Col xs={12} md={12}>
           <h3>
-            <Translate value="site_data.situation_title" />
+            <Translate value="site_data.situation_title" dangerousHTML />
           </h3>
           <p>
             <Translate

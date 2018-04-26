@@ -6,10 +6,18 @@ import { connect } from "react-redux";
 import { getContributorsUnassigned, changeLanguage } from "./actions";
 import SiteData from "./components/siteData/siteData";
 import NavBar from "./components/NavBar/NavBar";
+import AlertDissmisable from "./components/widgets/alertDissmisable";
 
 class App extends Component {
   componentWillMount() {
     this.props.getContributors();
+  }
+
+  checkError() {
+    if (this.props.contributors.error) {
+      return <AlertDissmisable />;
+    }
+    return null;
   }
 
   checkWorkroom = (contributor) => {
@@ -31,6 +39,17 @@ class App extends Component {
     if (!contributors) {
       return null;
     }
+
+    if (contributors.length === 0) {
+      return (
+        <tr>
+          <td colSpan="6">
+            <Translate value="contributors_list.empty" />
+          </td>
+        </tr>
+      );
+    }
+
     return contributors.map(item => (
       <tr key={item.id}>
         <td>{`${item.first_name} ${item.last_name}`}</td>
@@ -48,8 +67,12 @@ class App extends Component {
       <div>
         <NavBar {...this.props} />
         <Grid fluid>
+          {this.checkError()}
           <Row className="show-grid">
             <Col xs={12} md={8}>
+              <h4>
+                <Translate value="contributors_list.header" />
+              </h4>
               <Table responsive>
                 <thead>
                   <tr>
