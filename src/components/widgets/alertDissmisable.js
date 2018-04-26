@@ -17,16 +17,16 @@ class AlertDissmisable extends React.Component {
   }
 
   render() {
-    if (this.state.show) {
-      return (
-        <Alert className="col-md-6 col-md-offset-3" bsStyle="danger" onDismiss={this.handleDismiss}>
-          <p>
-            <Translate value="error" />
-          </p>
-        </Alert>
-      );
+    if (!this.state.show) {
+      return null;
     }
-    return null;
+    return (
+      <Alert className="col-md-6 col-md-offset-3" bsStyle="danger" onDismiss={this.handleDismiss}>
+        <p>
+          <Translate value="error" />
+        </p>
+      </Alert>
+    );
   }
 }
 

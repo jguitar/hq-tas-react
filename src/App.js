@@ -3,7 +3,7 @@ import { Translate } from "react-redux-i18n";
 import { Table, Grid, Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 
-import { getContributorsUnassigned, changeLanguage } from "./actions";
+import { getContributorsUnassigned } from "./actions";
 import SiteData from "./components/siteData/siteData";
 import NavBar from "./components/NavBar/NavBar";
 import AlertDissmisable from "./components/widgets/alertDissmisable";
@@ -30,7 +30,7 @@ class App extends Component {
     }
     return (
       <span className="overocupation">
-        <Translate value="contributors_list.overocupation" />
+        <Translate value="contributors_list.overoccupation" />
       </span>
     );
   };
@@ -65,7 +65,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar {...this.props} />
+        <NavBar />
         <Grid fluid>
           {this.checkError()}
           <Row className="show-grid">
@@ -120,9 +120,6 @@ function mapDispatchToProps(dispatch) {
   return {
     getContributors: () => {
       dispatch(getContributorsUnassigned());
-    },
-    setLanguage: (e) => {
-      dispatch(changeLanguage(e.target.getAttribute("value")));
     },
   };
 }

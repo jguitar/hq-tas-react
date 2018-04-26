@@ -7,7 +7,7 @@ export function getContributorsUnassigned() {
       type: "GET_CONTRIBUTORS_UNASSIGNED",
       payload: response.data,
     }))
-    .catch(err => ({
+    .catch(() => ({
       type: "HANDLE_ERROR",
       payload: true,
     }));
@@ -19,7 +19,7 @@ export function getSiteFullInfo() {
       type: "GET_SITE_FULL_INFO",
       payload: response.data,
     }))
-    .catch(err => ({
+    .catch(() => ({
       type: "HANDLE_ERROR",
       payload: true,
     }));
