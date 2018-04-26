@@ -1,28 +1,30 @@
+import { setLocale } from "react-redux-i18n";
 import API from "../api";
 
 export function getContributorsUnassigned() {
-  const request = API.get(`/contributors/unassigned.json?site_id=${process.env.REACT_APP_SITE_ID}`).then(response => response.data);
-
-  return {
-    type: "GET_CONTRIBUTORS_UNASSIGNED",
-    payload: request,
-  };
+  return API.get(`/contributors/unassigned.json?site_id=${process.env.REACT_APP_SITE_ID}`)
+    .then(response => ({
+      type: "GET_CONTRIBUTORS_UNASSIGNED",
+      payload: response.data,
+    }))
+    .catch(() => ({
+      type: "HANDLE_ERROR",
+      payload: true,
+    }));
 }
 
 export function getSiteFullInfo() {
-  const request = API.get(`/sites/${process.env.REACT_APP_SITE_ID}/full.json`).then(response => response.data);
-
-  return {
-    type: "GET_SITE_FULL_INFO",
-    payload: request,
-  };
+  return API.get(`/sites/${process.env.REACT_APP_SITE_ID}/full.json`)
+    .then(response => ({
+      type: "GET_SITE_FULL_INFO",
+      payload: response.data,
+    }))
+    .catch(() => ({
+      type: "HANDLE_ERROR",
+      payload: true,
+    }));
 }
 
-export function getBusinessUnits() {
-  const request = API.get("/business_units.json").then(response => response.data);
-
-  return {
-    type: "GET_BUSINESS_UNITS",
-    payload: request,
-  };
-}
+export const changeLanguage = lang => (dispatch) => {
+  dispatch(setLocale(lang));
+};

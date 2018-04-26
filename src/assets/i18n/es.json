@@ -1,8 +1,9 @@
 {
   "app": {
-    "title": "Bienvenido a Take A Sit"
+    "title": "TAS - %{site_name}"
   },
   "contributors_list": {
+    "header": "Colaboradores - Sin puesto asignado",
     "contributor": "Colaborador",
     "workplace": "Puesto de trabajo",
     "workroom": "Sala",
@@ -13,6 +14,17 @@
     "building": "Edificio",
     "state": "Estado",
     "unassigned": "Sin puesto asignado",
-    "overoccupation": "Sobreocupación"
-  }
+    "overoccupation": "Sobreocupación",
+    "empty": "No hay colaboradores sin asignar"
+  },
+  "site_data": {
+    "ocupation_title": "<span class='danger_bold'>Ocupación por planta</span>",
+    "overocupation_legend": "<span class='danger_bold'>*</span> Planta sobreocupada",
+    "situation_title": "<span class='danger_bold'>Situación de los colaboradores</span>",
+    "contributors_without_workroom": "Colaboradores sin sala: <span class='danger_bold'>%{number}</span>",
+    "contributors_over_occupation": "Colaboradores sobreocupación: %{number}",
+    "contributors_assigned": "Colaboradores asignados: %{number}",
+    "contributors_size": "<strong>Total colaboradores: %{number}</strong>"
+  },
+  "error": "Ha ocurrido un error al conectar con el servidor. Inténtelo de nuevo más tarde."
 }

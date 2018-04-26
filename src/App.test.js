@@ -1,10 +1,11 @@
 /* global it, describe, expect, beforeEach */
 
 import React from "react";
-import { mount, shallow } from "enzyme";
+import { mount } from "enzyme";
 import MockAdapter from "axios-mock-adapter";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
+import promise from "redux-promise";
 
 import API from "./api";
 import App from "./App";
@@ -41,7 +42,8 @@ describe("Table contributors without workplace", () => {
 
     mock.onGet(`/sites/${process.env.REACT_APP_SITE_ID}/full.json`).reply(200, {});
 
-    const mockStore = configureStore();
+    const middlewares = [promise];
+    const mockStore = configureStore(middlewares);
     const store = mockStore(initialState);
     enzymeWrapper = mount(<Provider store={store}>
       <App />
@@ -49,8 +51,6 @@ describe("Table contributors without workplace", () => {
   });
 
   it("should render self and subcomponents", () => {
-    expect(enzymeWrapper.find("Grid").prop("fluid")).toBe(true);
-
     expect(enzymeWrapper.find("Table").exists()).toBe(true);
   });
 
