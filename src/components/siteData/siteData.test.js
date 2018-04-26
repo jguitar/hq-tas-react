@@ -4,6 +4,7 @@ import React from "react";
 import { mount } from "enzyme";
 import MockAdapter from "axios-mock-adapter";
 import configureStore from "redux-mock-store";
+import promise from "redux-promise";
 
 import API from "../../api";
 
@@ -33,7 +34,8 @@ describe("Site data test without overoccupation", () => {
     };
     const mock = new MockAdapter(API);
     mock.onGet(`/sites/${process.env.REACT_APP_SITE_ID}/full.json`).reply(200, {});
-    const mockStore = configureStore();
+    const middlewares = [promise];
+    const mockStore = configureStore(middlewares);
     const store = mockStore(initialState);
     enzymeWrapper = mount(<SiteData store={store} />);
   });
@@ -67,7 +69,8 @@ describe("Site data test with overoccupation", () => {
     };
     const mock = new MockAdapter(API);
     mock.onGet(`/sites/${process.env.REACT_APP_SITE_ID}/full.json`).reply(200, {});
-    const mockStore = configureStore();
+    const middlewares = [promise];
+    const mockStore = configureStore(middlewares);
     const store = mockStore(initialState);
     enzymeWrapper = mount(<SiteData store={store} />);
   });

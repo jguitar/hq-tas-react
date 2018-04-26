@@ -8,6 +8,9 @@ export default function (state = {}, action) {
     case "GET_SITE_FULL_INFO":
       return { ...state, site: action.payload };
 
+    case "HANDLE_ERROR":
+      return { ...state, error: action.payload };
+
     default:
       return state;
   }
