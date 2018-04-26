@@ -14,7 +14,7 @@
     "building": "Edificio",
     "state": "Estado",
     "unassigned": "Sin puesto asignado",
-    "overocupation": "Sobreocupación",
+    "overoccupation": "Sobreocupación",
     "empty": "No hay colaboradores sin asignar"
   },
   "site_data": {
@@ -26,5 +26,5 @@
     "contributors_assigned": "Colaboradores asignados: %{number}",
     "contributors_size": "<strong>Total colaboradores: %{number}</strong>"
   },
-  "error": "Ha ocurrido un error al conectar con el servidor. Intentelo mas tarde."
+  "error": "Ha ocurrido un error al conectar con el servidor. Inténtelo de nuevo más tarde."
 }
