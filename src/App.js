@@ -1,14 +1,30 @@
 import React, { Component } from "react";
 import { Translate } from "react-redux-i18n";
-import { Table, Grid, Col, Row } from "react-bootstrap";
+import {
+  Table,
+  Grid,
+  Col,
+  Row,
+  Button,
+  Popover,
+  Modal,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
+
 import { connect } from "react-redux";
 
-import { getContributorsUnassigned } from "./actions";
+import { getContributorsUnassigned, getContributor } from "./actions";
 import SiteData from "./components/siteData/siteData";
 import NavBar from "./components/NavBar/NavBar";
 import AlertDissmisable from "./components/widgets/alertDissmisable";
+import EditContributor from "./components/EditContributor/EditContributor";
 
 class App extends Component {
+  state = {
+    showModal: false,
+  };
+
   componentWillMount() {
     this.props.getContributors();
   }
@@ -35,6 +51,16 @@ class App extends Component {
     );
   };
 
+  editContributor = (e) => {
+    const contributorId = e.target.getAttribute("value");
+    if (!contributorId) {
+      return null;
+    }
+    this.props.getContributor(contributorId);
+
+    this.setState({ showModal: true });
+  };
+
   renderContributors = (contributors) => {
     if (!contributors) {
       return null;
@@ -50,13 +76,13 @@ class App extends Component {
       );
     }
 
-    return contributors.map(item => (
-      <tr key={item.id}>
-        <td>{`${item.first_name} ${item.last_name}`}</td>
-        <td>{item.workroom}</td>
-        <td>{item.floor}</td>
-        <td>{item.code}</td>
-        <td>{item.business_unit}</td>
+    return contributors.map((item, i) => (
+      <tr key={item.id} onClick={this.editContributor}>
+        <td value={item.id}>{`${item.first_name} ${item.last_name}`}</td>
+        <td value={item.id}>{item.workroom}</td>
+        <td value={item.id}>{item.floor}</td>
+        <td value={item.id}>{item.code}</td>
+        <td value={item.id}>{item.business_unit}</td>
         <td>{this.checkWorkroom(item)}</td>
       </tr>
     ));
@@ -66,6 +92,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
+        {<EditContributor show={this.state.showModal} {...this.props.contributor} />}
         <Grid fluid>
           {this.checkError()}
           <Row className="show-grid">
@@ -73,7 +100,7 @@ class App extends Component {
               <h4>
                 <Translate value="contributors_list.header" />
               </h4>
-              <Table responsive>
+              <Table responsive hover>
                 <thead>
                   <tr>
                     <th>
@@ -113,6 +140,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     contributors: state.contributors,
+    contributor: state.contributor,
   };
 }
 
@@ -120,6 +148,9 @@ function mapDispatchToProps(dispatch) {
   return {
     getContributors: () => {
       dispatch(getContributorsUnassigned());
+    },
+    getContributor: (id) => {
+      dispatch(getContributor(id));
     },
   };
 }
